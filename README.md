@@ -10,26 +10,26 @@ team of zhongce mark's css guide book
 
 3、重复的属性不要放在一起，会增加渲染的时间，如：
 很多网站CSS模块都组队放在一个CSS文件中，比方说你有10个CSS模块，每个模块都有一个.module_a a{} .module_b a{} ...的CSS命名，如：
-> .module_a a{}的时候，页面上，所有的a标签扫一遍；
-  .module_b a{}的时候，页面上，所有的a标签扫一遍；
-  .module_c a{}的时候，页面上，所有的a标签扫一遍，恩，这个有效果；
-  .module_d a{}的时候，页面上，所有的a标签扫一遍；
+>  .module_a a{}的时候，页面上，所有的a标签扫一遍；
+   .module_b a{}的时候，页面上，所有的a标签扫一遍；
+   .module_c a{}的时候，页面上，所有的a标签扫一遍，恩，这个有效果；
+   .module_d a{}的时候，页面上，所有的a标签扫一遍；
      
 	扫一遍只要0.3毫秒，你页面要是有100个类似.xxx a{}，那就是300毫秒的渲染	
 		
 ####组内规范，如：	
 A、通用属性：
 对于有了ue规范的平台来说，定义标准变量的好处是显而易见的，如：
-> ma: 0 auto;
-m-tiny: 1px;
-m-small: 3px;
-m-middle: 5px; 
-m-big: 8px;
-m-bigger: 10px;
-m-huge: 20px;
+>  ma: 0 auto;
+   m-tiny: 1px;
+   m-small: 3px;
+   m-middle: 5px; 
+   m-big: 8px;
+   m-bigger: 10px;
+   m-huge: 20px;
 		
 padding属性：
-> 同margin；
+>  同margin；
 		
 B、前缀，减少冲突概率和：
   1、全局布局使用的class：可以不用前缀，如：
