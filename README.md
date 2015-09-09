@@ -4,16 +4,20 @@ team of zhongce mark's css guide book
 
 1、对于网站非通用元素，如果样式简单(1~2个属性)，对其分离并使用面向属性的命名方法：千万不要对网站通用的元素进行分离。
 2、精简高效CSS命名之“三无原则”；无ID，无层级，无标签，减少层级，避免过度修饰，如：
-> * #test .test{}， ul.test{}，#test ul{} ：都不推荐 			
-* div.promo 			
-* ul.nav li a{} -> .nav a{}
+```html
+#test .test{}， ul.test{}，#test ul{} ：都不推荐 			
+div.promo 			
+ul.nav li a{} -> .nav a{}
+```
 
 3、重复的属性不要放在一起，会增加渲染的时间，如：
 很多网站CSS模块都组队放在一个CSS文件中，比方说你有10个CSS模块，每个模块都有一个.module_a a{} .module_b a{} ...的CSS命名，如：
-> * .module_a a{}的时候，页面上，所有的a标签扫一遍；
-* .module_b a{}的时候，页面上，所有的a标签扫一遍；
-* .module_c a{}的时候，页面上，所有的a标签扫一遍，恩，这个有效果；
-* .module_d a{}的时候，页面上，所有的a标签扫一遍；
+```html
+.module_a a{}的时候，页面上，所有的a标签扫一遍；
+.module_b a{}的时候，页面上，所有的a标签扫一遍；
+.module_c a{}的时候，页面上，所有的a标签扫一遍，恩，这个有效果；
+.module_d a{}的时候，页面上，所有的a标签扫一遍；
+```
 
 > 扫一遍只要0.3毫秒，你页面要是有100个类似.xxx a{}，那就是300毫秒的渲染	
 
