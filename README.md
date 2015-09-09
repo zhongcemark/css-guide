@@ -80,6 +80,6 @@ com-mark-p-instruction
 ```
 
 #####参考文档：
-	[参考1](https://github.com/hoosin/lite/blob/master/Standard/%E9%80%9A%E7%94%A8%20CSS%20%E7%AC%94%E8%AE%B0%E3%80%81%E5%BB%BA%E8%AE%AE%E4%B8%8E%E6%8C%87%E5%AF%BC.md)
-	[参考2](http://www.zhangxinxu.com/wordpress/2010/09/%E7%B2%BE%E7%AE%80%E9%AB%98%E6%95%88%E7%9A%84css%E5%91%BD%E5%90%8D%E5%87%86%E5%88%99%E6%96%B9%E6%B3%95)
-	[@pazguille](http://twitter.com/pazguille)
+[参考1](https://github.com/hoosin/lite/blob/master/Standard/%E9%80%9A%E7%94%A8%20CSS%20%E7%AC%94%E8%AE%B0%E3%80%81%E5%BB%BA%E8%AE%AE%E4%B8%8E%E6%8C%87%E5%AF%BC.md)
+[参考2](http://www.zhangxinxu.com/wordpress/2010/09/%E7%B2%BE%E7%AE%80%E9%AB%98%E6%95%88%E7%9A%84css%E5%91%BD%E5%90%8D%E5%87%86%E5%88%99%E6%96%B9%E6%B3%95)
+[@quenteenfix](http://weibo.com/u/2410897424)
