@@ -21,13 +21,15 @@ team of zhongce mark's css guide book
 #####A、通用属性：
 ######对于有了ue规范的平台来说，定义标准变量的好处是显而易见的，如：
 margin属性：
-	* ma: 0 auto;
-	* m-tiny: 1px;
-	* m-small: 3px;
-	* m-middle: 5px; 
-	* m-big: 8px;
-	* m-bigger: 10px;
-	* m-huge: 20px;
+```css
+* ma: 0 auto;
+* m-tiny: 1px;
+* m-small: 3px;
+* m-middle: 5px; 
+* m-big: 8px;
+* m-bigger: 10px;
+* m-huge: 20px;
+```
 		
 padding属性：
 > * 同margin；
