@@ -1,0 +1,165 @@
+http://www.dtao.org/archives/34
+
+简介：
+使用gulp-less插件将less文件编译成css，当有less文件发生改变自动编译less，并保证less语法错误或出现异常时能正常工作并提示错误信息。
+1、安装nodejs/全局安装gulp/项目安装gulp/创建package.json和gulpfile.js文件
+1.1、gulp基本使用还未掌握？请参看： gulp详细入门教程
+1.2、本示例目录结构如下：
+
+2、本地安装gulp-less
+2.1、github：https://github.com/plus3network/gulp-less
+2.3、安装：命令提示符执行 cnpm install gulp-less --save-dev
+2.4、注意：没有安装cnpm请使用 npm install gulp-less --save-dev 什么是cnpm，如何安装？
+2.5、说明：--save-dev 保存配置信息至 package.json 的 devDependencies 节点。为什么要保存至package.json？
+
+3、配置gulpfile.js
+3.1、基本使用
+JavaScript
+1
+2
+3
+4
+5
+6
+7
+8
+var gulp = require('gulp'),
+    less = require('gulp-less');
+ 
+gulp.task('testLess', function () {
+    gulp.src('src/less/index.less')
+        .pipe(less())
+        .pipe(gulp.dest('src/css'));
+});
+3.2、编译多个less文件
+JavaScript
+1
+2
+3
+4
+5
+6
+7
+8
+var gulp = require('gulp'),
+    less = require('gulp-less');
+ 
+gulp.task('testLess', function () {
+    gulp.src(['src/less/index.less','src/less/detail.less']) //多个文件以数组形式传入
+        .pipe(less())
+        .pipe(gulp.dest('src/css')); //将会在src/css下生成index.css以及detail.css 
+});
+3.3、匹配符“!”，“*”，“**”，“{}”
+JavaScript
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+var gulp = require('gulp'),
+    less = require('gulp-less');
+ 
+gulp.task('testLess', function () {
+    //编译src目录下的所有less文件
+    //除了reset.less和test.less（**匹配src/less的0个或多个子文件夹）
+    gulp.src(['src/less/*.less', '!src/less/**/{reset,test}.less']) 
+        .pipe(less())
+        .pipe(gulp.dest('src/css'));
+});
+3.4、调用多模块（编译less后压缩css）
+JavaScript
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+var gulp = require('gulp'),
+    less = require('gulp-less'),
+     //确保本地已安装gulp-minify-css [cnpm install gulp-minfy-css --save-dev]
+    cssmin = require('gulp-minify-css');
+ 
+gulp.task('testLess', function () {
+    gulp.src('src/less/index.less')
+        .pipe(less())
+        .pipe(cssmin()) //兼容IE7及以下需设置compatibility属性 .pipe(cssmin({compatibility: 'ie7'}))
+        .pipe(gulp.dest('src/css'));
+});
+4、执行任务
+4.1、命令提示符执行：gulp testLess
+
+5、监听事件（自动编译less）
+5.1、若每修改一次less，就要手动执行任务，显然是不合理的，所以当有less文件发生改变时使其自动编译
+JavaScript
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+var gulp = require('gulp'),
+    less = require('gulp-less');
+ 
+gulp.task('testLess', function () {
+    gulp.src(['src/less/*.less','!src/less/extend/{reset,test}.less'])
+        .pipe(less())
+        .pipe(gulp.dest('src/css'));
+});
+ 
+gulp.task('testWatch', function () {
+    gulp.watch('src/**/*.less', ['testLess']); //当所有less文件发生改变时，调用testLess任务
+});
+5.2、启动监听事件：命令提示符执行 gulp testWatch
+5.3、注意：该命令提示符执行需处于打开状态，关闭后监听事件结束
+
+6、异常处理
+6.1、当编译less时出现语法错误或者其他异常，会终止watch事件，通常需要查看命令提示符窗口才能知道，这并不是我们所希望的，所以我们需要处理出现异常并不终止watch事件（gulp-plumber），并提示我们出现了错误（gulp-notify）。
+JavaScript
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+var gulp = require('gulp'),
+    less = require('gulp-less');
+    //当发生异常时提示错误 确保本地安装gulp-notify和gulp-plumber
+    notify = require('gulp-notify'),
+    plumber = require('gulp-plumber');
+ 
+gulp.task('testLess', function () {
+    gulp.src('src/less/*.less')
+        .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
+        .pipe(less())
+        .pipe(gulp.dest('src/css'));
+});
+gulp.task('testWatch', function () {
+    gulp.watch('src/**/*.less', ['testLess']);
+});
+7、结束语
+7.1、本文有任何错误，或有任何疑问，欢迎留言说明
